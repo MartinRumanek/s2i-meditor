@@ -1,8 +1,8 @@
 FROM openshift/base-centos7
 
 MAINTAINER Martin Rumanek <martin@rumanek.cz>
-ENV TOMCAT_MAJOR=8 \
-    TOMCAT_VERSION=8.0.33 \
+ENV TOMCAT_MAJOR=7 \
+    TOMCAT_VERSION=7.0.69 \
     CATALINA_HOME=/usr/local/tomcat \
     JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8 \
     JDBC_DRIVER_DOWNLOAD_URL=https://jdbc.postgresql.org/download/postgresql-9.4.1208.jre7.jar \
@@ -56,7 +56,7 @@ RUN set -ex \
 RUN set -x \
 	&& curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
 	&& curl -fSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
-	&& gpg --batch --verify tomcat.tar.gz.asc tomcat.tar.gz \
+#	&& gpg --batch --verify tomcat.tar.gz.asc tomcat.tar.gz \
 	&& tar -xvf tomcat.tar.gz --strip-components=1 \
 	&& rm bin/*.bat \
 	&& rm tomcat.tar.gz*
