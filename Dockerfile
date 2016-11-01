@@ -2,7 +2,7 @@ FROM openshift/base-centos7
 
 MAINTAINER Martin Rumanek <martin@rumanek.cz>
 ENV TOMCAT_MAJOR=8 \
-    TOMCAT_VERSION=8.5.4 \
+    TOMCAT_VERSION=8.0.38 \
     CATALINA_HOME=/usr/local/tomcat \
     JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8 \
     JDBC_DRIVER_DOWNLOAD_URL=https://jdbc.postgresql.org/download/postgresql-9.4-1201.jdbc41.jar \
@@ -37,7 +37,7 @@ RUN yum install -y perl-CPAN \
         && rm Image-ExifTool-10.20.tar.gz
 
 
-RUN INSTALL_PKGS="tar" && \
+RUN INSTALL_PKGS="tar sox" && \
     yum install -y --enablerepo=centosplus $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
